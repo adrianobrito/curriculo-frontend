@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,11 +15,13 @@
     <!-- Custom styles for this template -->
     <link href="css/home.css" rel="stylesheet">
 
+
+
   </head>
 
-  <body>
+  <body ng-app="index">
 
-    <div class="site-wrapper">
+    <div class="site-wrapper" ng-controller="IndexController as model">
 
       <div class="site-wrapper-inner">
 
@@ -46,12 +47,13 @@
             </p>
           </div>
 
+          <modal></modal>
+
           <div class="mastfoot">
             <div class="inner">
               <p>Criado e mantido por <a href="http://github.com/adrianobrito">@adrianobrito</a></p>
             </div>
-          </div>
-
+          </div>     
         </div>
 
       </div>
@@ -61,8 +63,12 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/angular.min.js"></script>
     <script src="js/jquery-1.11.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    
+    <script src="js/index/app.js"></script>
+    <script src="js/modal/app.js"></script>
+
+
   </body>
 </html>
