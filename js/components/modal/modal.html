@@ -1,0 +1,24 @@
+<div class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">{{title}}</h4>
+      </div>
+      
+      <div class="modal-body" ng-transclude>        
+      </div>
+
+      {{confirm}}
+      <div class="modal-footer" ng-show="confirm">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
+        <button type="button" class="btn btn-primary modal-confirm">Sim</button>
+      </div>
+
+      <div class="modal-footer" ng-hide="confirm">
+        <button type="button" class="btn btn-default modal-ok">Ok</button>
+      </div>
+
+    </div>
+  </div>
+</div>
