@@ -17,6 +17,15 @@
 
   <body>
 
+      <div class="container">
+        <modal id="carregando" title="Atenção" width="350px" closeable="false">
+          <ul class="list-inline">
+            <li><img src="image/loader.gif"/></li>
+            <li class="carregandoLabel">Carregando...</li>
+          </ul>
+        </modal>
+      </div>
+
       <div class="container" ng-view>
       </div>
 
@@ -25,6 +34,7 @@
     <script src="js/jquery-1.11.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/components/modal/app.js"></script>
+    <script src="js/components/popover/app.js"></script>
     <script src="js/app/config.js"></script>
     <script src="js/app/controllers.js"></script>
     <script src="js/app/services.js"></script>
