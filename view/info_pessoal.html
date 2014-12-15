@@ -31,8 +31,11 @@
 
 					<div class="col-md-4">
 				    	<h4>Estado Cívil</h4>
-						<input class="form-control input-lg"
-							   ng-required="true"/>
+				    	<select class="form-control input-lg">
+				    		<option value="">Selecione...</option>
+				    		<option value="solteiro">Solteiro</option>
+				    		<option value="casado">Casado</option>
+				    	</select>
 					</div>
 
 					<div class="col-md-4">
@@ -72,7 +75,8 @@
 					<div class="col-md-3">
 				    	<h4>Número</h4>
 						<input class="form-control input-lg" 
-							   ng-required="true"/>
+							   ng-required="true" ng-model="info_pessoal.cpf"
+							   ui-number-mask/>
 					</div>
 
 					<div class="col-md-3">
