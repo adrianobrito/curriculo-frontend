@@ -1,4 +1,4 @@
-var app = angular.module('curriculo',['ngRoute', 'modal', 'popover', 'alert']);
+var app = angular.module('curriculo',['ngRoute', 'modal', 'popover', 'alert', 'ui.utils.masks']);
 var root = '/curriculo-frontend';
 
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
