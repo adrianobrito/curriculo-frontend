@@ -1,6 +1,6 @@
-var modal_module = angular.module('popover', []);
+var popover_module = angular.module('popover', []);
 	
-modal_module.directive('popover', function () {
+popover_module.directive('popover', function () {
 	return {
 		restrict: 'E',
 		transclude: true,

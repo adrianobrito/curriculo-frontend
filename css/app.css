@@ -7,6 +7,11 @@ body{
 	background-image: url('../image/bg_template.png')
 }
 
+.footer {
+	position: fixed;
+	bottom: 0;
+}
+
 /** Form **/
 .form-signin {
   max-width: 330px;
