@@ -8,16 +8,17 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 		templateUrl: 'view/login.html'
 	}).
 
-	when('/cadastrar_info_usuario',{
-		templateUrl: 'view/info_usuario.html'
+	when('/cadastrar',{
+		templateUrl: 'view/cadastrar.html'
 	}).
 
-	when('/cadastrar_info_pessoal',{
-		templateUrl: 'view/info_pessoal.html'
+	when('/cadastrar_academica', {
+		templateUrl: 'view/info_academica.html'
 	})
 
 }]);
 
+/*** App Directives **/ 
 app.directive('sameAs', function() {
   return {
     require: 'ngModel',
@@ -35,6 +36,30 @@ app.directive('sameAs', function() {
   };
 });
 
+app.directive('ngWizard', [function () {
+	return {
+		restrict: 'A',
+		scope:{
+			title: "@title",
+			current: "@current",
+			size: "=size"
+		}, templateUrl: 'js/components/wizard-panel/template.html',
+		transclude: true
+	};
+}]);
+
+/*** App Filters **/ 
+app.filter('range', function() {
+  return function(input, total) {
+    total = parseInt(total);
+    for (var i=0; i<total; i++)
+      input.push(i);
+    return input;
+  };
+});
+
+
+/*** App Functions **/ 
 function findProp(obj, prop, defval){
     if (typeof defval == 'undefined') defval = null;
     prop = prop.split('.');

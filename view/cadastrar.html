@@ -1,0 +1,35 @@
+<div class="text-center" style="padding-top: 4em;">
+	<img src="image/logo-black.png" />
+</div>
+<div style="margin-top: 3em;" ng-controller="CadastroController">
+	<div ng-wizard title="Crie seu Cúrriculo Online!" current="{{$root.step}}" size="4">
+		
+		<form name="info_usuario_form" ng-controller="InfoUsuarioController as controller"
+			  novalidate ng-submit="controller.continuar()" ng-show="$root.step == 0">
+			<div ng-include="'view/info_usuario.html'"></div>
+			<div class="row" style="padding-top: 2em;">
+				<div class="col-md-12">
+					<button class="btn btn-primary btn-lg" type="submit" ng-disabled="!info_usuario_form.$valid">
+						Continuar <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> 
+					</button>
+				</div>
+			</div>
+		</form>
+		
+		<form name="info_pessoal_form" ng-controller="InfoPessoalController as controller"
+			  novalidate ng-submit="controller.continuar()" ng-show="$root.step == 1">
+			<div ng-include="'view/info_pessoal.html'"></div>
+			<div class="row" style="padding-top: 2em;">
+				<div class="col-md-12">
+					<button class="btn btn-default btn-lg" ng-click="voltar()">
+						Voltar <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> 
+					</button>
+					<button class="btn btn-primary btn-lg" type="submit" ng-disabled="!info_pessoal_form.$valid">
+						Continuar <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> 
+					</button>
+				</div>
+			</div>
+		</form>
+
+	</div>
+</div>

@@ -1,65 +1,39 @@
-<div class="text-center" style="padding-top: 4em;">
-	<img src="image/logo-black.png" />
+<div class="alert alert-danger" ng-show="info_usuario_form.email.$invalid && validate">
+	O <b>E-Mail</b> está em formato inválido
 </div>
-<div style="margin-top: 3em;">
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			<h3 class="panel-title">Crie seu Cúrriculo Online!</h3>
-		</div>
+<div class="alert alert-danger" ng-show="info_usuario_form.email.$error.required && !info_usuario_form.email.$pristine">
+	Informe o campo <b>E-Mail</b>!
+</div>
+<div class="alert alert-danger" ng-show="info_usuario_form.senha.$error.required && !info_usuario_form.senha.$pristine">
+	Informe o campo <b>Senha</b>!
+</div>
+<div class="alert alert-danger" ng-show="info_usuario_form.senhaConfirmacao.$error.required && !info_usuario_form.senhaConfirmacao.$pristine">
+	Informe o campo <b>Confirmar Senha</b>!
+</div>
+<div class="alert alert-danger" ng-show="info_usuario_form.senhaConfirmacao.$error.sameAs && validateSenha">
+	As senhas não estão iguais!
+</div>
+	
+<div class="row">
+	<div class="col-md-6">
+    	<h4>E-Mail</h4>
+		<input id="email" type="email" name="email" class="form-control input-lg" ng-model="info_usuario.email" 
+			   ng-required="true" ng-blur="validate=true"/>
+	</div>
+</div>
 
-		<div class="panel-body" ng-controller="InfoUsuarioController as controller">
-			
-			<form name="info_usuario_form" ng-submit="controller.continuar()" novalidate>
-				<div class="alert alert-danger" ng-show="info_usuario_form.email.$invalid && validate">
-					O <b>E-Mail</b> está em formato inválido
-				</div>
-				<div class="alert alert-danger" ng-show="info_usuario_form.email.$error.required && !info_usuario_form.email.$pristine">
-					Informe o campo <b>E-Mail</b>!
-				</div>
-				<div class="alert alert-danger" ng-show="info_usuario_form.senha.$error.required && !info_usuario_form.senha.$pristine">
-					Informe o campo <b>Senha</b>!
-				</div>
-				<div class="alert alert-danger" ng-show="info_usuario_form.senhaConfirmacao.$error.required && !info_usuario_form.senhaConfirmacao.$pristine">
-					Informe o campo <b>Confirmar Senha</b>!
-				</div>
-				<div class="alert alert-danger" ng-show="info_usuario_form.senhaConfirmacao.$error.sameAs">
-					As senhas não estão iguais!
-				</div>
-					
-				<div class="row">
-					<div class="col-md-6">
-				    	<h4>E-Mail</h4>
-						<input id="email" type="email" name="email" class="form-control input-lg" ng-model="info_usuario.email" 
-							   ng-required="true" ng-blur="validate=true"/>
-					</div>
-				</div>
+<div class="row">
+	<div class="col-md-4">
+		<h4>Senha</h4>
+		<input id="senha"  name="senha" type="password" class="form-control input-lg" ng-model="info_usuario.senha" ng-required="true"/>
+	</div>
+</div>
 
-				<div class="row">
-					<div class="col-md-4">
-						<h4>Senha</h4>
-						<input id="senha"  name="senha" type="password" class="form-control input-lg" ng-model="info_usuario.senha" ng-required="true"/>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-md-4">
-						<h4>Confirmar Senha</h4>
-						<input id="senhaConfirmacao" name="senhaConfirmacao" type="password" class="form-control input-lg" 
-							   ng-model="info_usuario.senhaConfirmacao" ng-required="true" same-as="info_usuario.senha"/>
-					</div>
-				</div>
-
-				<div class="row" style="padding-top: 2em;">
-					<div class="col-md-12">
-						<button class="btn btn-primary btn-lg" type="submit" ng-disabled="!info_usuario_form.$valid" ng-click="continuar()">
-							Continuar <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> 
-						</button>
-					</div>
-				</div>
-
-			</form>
-
-
-		</div>
+<div class="row">
+	<div class="col-md-4">
+		<h4>Confirmar Senha</h4>
+		<input id="senhaConfirmacao" name="senhaConfirmacao" type="password" class="form-control input-lg" 
+			   ng-model="info_usuario.senhaConfirmacao" ng-required="true" same-as="info_usuario.senha"
+			   ng-blur="validateSenha=true"/>
 	</div>
 </div>
