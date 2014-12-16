@@ -5,13 +5,23 @@
 <div class="row">
 	<div class="col-md-12">
     	<h4>Nível</h4>
-    	<select class="form-control input-lg" ng-model="info_pessoal.estado_civil"
-    			id="estado_civil" name="estado_civil" ng-required="true">
+    	<select class="form-control input-lg" ng-model="info_academica.nivel"
+    			id="nivel" name="nivel" ng-required="true">
     		<option value="">Selecione...</option>
     		<option value="ensino_fundamental">Ensino Fundamental</option>
     		<option value="ensino_medio">Ensino Médio</option>
     		<option value="ensino_superior_graduacao">Ensino Superior</option>
     		<option value="ensino_superior_pos_graduacao">Pós-Graduação</option>
     	</select>
+	</div>
+
+</div>
+
+<div class="row">
+	<div class="col-md-10">
+		<h4>Curso</h4>
+		<input class="form-control input-lg"
+			   id="curso" name="curso"
+			   ng-required="true" ng-model="info_pessoal.curso"/>
 	</div>
 </div>
