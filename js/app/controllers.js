@@ -22,16 +22,16 @@ app.controller('InfoUsuarioController', function($scope){
 
 });
 
-app.controller('InfoPessoalController', function(){
+app.controller('InfoPessoalController', function($scope){
 	
-	this.info_pessoal = {};
+	$scope.info_pessoal = {};
 
 	this.voltar = function(){
 		location.href = "#cadastrar_info_usuario";
 	}
 
 	this.continuar = function(){
-
+		console.log($scope.info_pessoal);
 	}
 
 });
