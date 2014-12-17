@@ -46,6 +46,10 @@
 	Informe o campo <b>Telefone</b>!
 </div>
 
+<div class="alert alert-danger" ng-show="info_pessoal_form.nascimento.$error.required && !info_pessoal_form.nascimento.$pristine">
+	Informe o campo <b>Telefone</b>!
+</div>
+
 
 <div class="row">
 	<div class="col-md-12">
@@ -56,13 +60,13 @@
 </div>
 
 <div class="row">
-	<div class="col-md-4">
+	<div class="col-md-3">
     	<h4>CPF</h4>
 		<input id="cpf" type="text" name="cpf" class="form-control input-lg"
 			   ng-required="true" ng-model="info_pessoal.cpf" ng-blur="validate=true" ui-br-cpf-mask/>
 	</div>
 
-	<div class="col-md-4">
+	<div class="col-md-3">
     	<h4>Estado Cívil</h4>
     	<select class="form-control input-lg" ng-model="info_pessoal.estado_civil"
     			id="estado_civil" name="estado_civil" ng-required="true">
@@ -72,7 +76,13 @@
     	</select>
 	</div>
 
-	<div class="col-md-4">
+	<div class="col-md-3">
+		<h4>Data de Nascimento</h4>
+		<input id="nascimento" type="date" value="" name="nascimento" class="form-control input-lg"
+			   ng-required="true" ng-model="info_pessoal.nascimento"/>
+	</div>
+
+	<div class="col-md-3">
     	<h4>Nacionalidade</h4>
 		<input class="form-control input-lg"
 			   id="nacionalidade" name="nacionalidade"
