@@ -39,3 +39,27 @@ app.controller('InfoPessoalController', function($scope, $rootScope){
 	}
 
 });
+
+app.controller('InfoAcademicaController', function($scope, $rootScope){
+	$scope.info_academica = {};
+	$scope.infos_academica = [];
+
+	$scope.adicionar = function(){
+		$scope.infos_academica.push($scope.info_academica);
+		$scope.info_academica = {}
+	}
+
+	this.remover = function(index){
+		$scope.infos_academica.splice(index, 1);
+	}
+
+	this.voltar = function(){
+		$rootScope.step = 1;
+	}
+
+	this.continuar = function(){
+		console.log($scope.info_academica);
+		$rootScope.step = 3;
+	}
+
+});

@@ -1,5 +1,17 @@
-<div class="well">
-	Esta seção é onde você informa seus dados acadêmicos. Aqui é recomendavel você informar suas qualificações acadêmicas que são necessárias para sua conquista do seu emprego. <b>Evite</b> informar informações desnecessárias como, por exemplo, os dados do Ensino Fundamental caso tenha concluído o Ensino Médio.
+<div class="alert alert-danger" ng-show="info_academica_form.nivel.$error.required && !info_academica_form.nivel.$pristine">
+	Informe o campo <b>Nível</b>!
+</div>
+<div class="alert alert-danger" ng-show="info_academica_form.curso.$error.required && !info_academica_form.curso.$pristine">
+	Informe o campo <b>Curso</b>!
+</div>
+<div class="alert alert-danger" ng-show="info_academica_form.instituicao.$error.required && !info_academica_form.instituicao.$pristine">
+	Informe o campo <b>Instituição</b>!
+</div>
+<div class="alert alert-danger" ng-show="info_academica_form.inicio.$error.required && !info_academica_form.inicio.$pristine">
+	Informe o campo <b>Início</b>!
+</div>
+<div class="alert alert-danger" ng-show="info_academica_form.inicio.$error.required && !info_academica_form.inicio.$pristine">
+	Informe o campo <b>fim</b>!
 </div>
 
 <div class="row">
@@ -18,10 +30,104 @@
 </div>
 
 <div class="row">
-	<div class="col-md-10">
+	<div class="col-xs-12">
 		<h4>Curso</h4>
 		<input class="form-control input-lg"
-			   id="curso" name="curso"
-			   ng-required="true" ng-model="info_pessoal.curso"/>
+				   id="curso" name="curso" ng-disabled="info_academica.nivel != 'ensino_superior_graduacao' && info_academica.nivel != 'ensino_superior_pos_graduacao'"
+				   ng-required="info_academica.nivel == 'ensino_superior_graduacao' || info_academica.nivel == 'ensino_superior_pos_graduacao'" ng-model="info_academica.curso"/>
+	</div>	
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+    	<h4>Instiuição</h4>
+    	<input class="form-control input-lg" id="instituicao" name="instituicao"
+    		   ng-required="true" ng-model="info_academica.instituicao"/>
+    </div>
+</div>
+
+
+<div class="row">
+	<div class="col-xs-2">
+		<h4>&nbsp;</h4>
+		<h4>
+	      <input type="checkbox" class="input" ng-model="info_academica.incompleto" ng-checked="info_academica.incompleto"
+	      		 ng-click="info_academica.incompleto=!info_academica.incompleto"/> Incompleto
+	    </h4>
 	</div>
+
+	<div class="col-xs-5">
+    	<h4>Início</h4>
+    	<input class="form-control input-lg" id="inicio" name="inicio" ng-required="true"
+    		   ng-model="info_academica.inicio" ui-mask="99/99/9999"/>
+    </div>
+    <div class="col-xs-5">
+    	<h4>Fim</h4>
+    	<input class="form-control input-lg" id="fim" name="fim" ng-required="!info_academica.incompleto"
+    		   ng-disabled="info_academica.incompleto" ng-model="info_academica.fim" ui-mask="99/99/9999"/>
+    </div>
+</div>
+
+<div class="row" style="margin-top: 2em;">
+	<div class="col-md-12">
+		<button class="btn btn-primary btn-lg" ng-click="adicionar()" type="button"	>Adicionar Informação Acadêmica <span class="glyphicon glyphicon-plus"/></button>	
+	</div>				  	
+</div>
+
+<div class="panel panel-primary" style="margin-top: 2em;" ng-show="!!infos_academica.length">
+  <div class="panel-heading">
+  	Informações Acadêmicas Adicionadas
+  </div>
+  <div class="panel-body">
+  	<div ng-repeat="info in infos_academica">
+  		<div class="panel panel-default" style="margin-top: 2em;">
+
+  			<div class="panel-body">
+  				<div class="row">
+					<div class="col-md-12">
+	    				<b>Nível</b>
+	    				<p>{{info.nivel}}</p>
+	    			</div>
+	    		</div>
+
+	    		<div class="row" ng-show="info.curso != undefined">
+	    			<div class="col-md-12">
+	    				<b>Curso</b>
+	    				<p>{{info.curso}} {{info.incompleto ? 'Incompleto' : ''}}</p>
+	    			</div>
+	    		</div>
+
+	    		<div class="row">
+	    			<div class="col-md-12">
+	    				<b>Instituição</b>
+	    				<p>{{info.instituicao}}</p>
+	    			</div>
+	    		</div>
+
+	    		<div class="row">
+	    			<div class="col-md-6">
+	    				<b>Início</b>
+	    				<p>{{info.inicio}}</p>
+	    			</div>
+	    		</div>
+
+	    		<div class="row" ng-show="info.fim != undefined">
+	    			<div class="col-md-6">
+	    				<b>Fim</b>
+	    				<p>{{info.fim}}</p>
+	    			</div>
+	    		</div>
+
+	    		<div class="row" ng-show="info.fim == undefined">
+	    			<div class="col-md-6">
+	    				<b>Fim</b>
+	    				<p>Em Andamento</p>
+	    			</div>
+	    		</div>
+  			</div>
+
+  			
+  		</div>
+  	</div>
+  </div>
 </div>
