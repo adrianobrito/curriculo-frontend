@@ -68,3 +68,20 @@ app.controller('InfoAcademicaController', function($scope, $rootScope, $cv){
 	}
 
 });
+
+app.controller('InfoProfissionalController', function($scope){
+	$scope.infos_profissional = []
+	$scope.info_profissional = {}
+	$scope.info_profissional.atividades = []
+	$scope.atividade = { }
+
+	$scope.adicionar_atividade = function(){
+		$scope.info_profissional.atividades.push($scope.atividade);
+		$scope.atividade = { }		
+	}
+
+	$scope.remover_atividade = function(index){
+		$scope.info_profissional.atividades.splice(index, 1);	
+	}
+
+});

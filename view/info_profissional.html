@@ -3,4 +3,76 @@
 	<ul>
 		<li>Procure informar experiências profissionais <b>relacionadas</b> com o emprego que você está procurando.</li>
 	</ul>
+	<ul>
+		<li>A sessão <b>Atividades</b> deve conter as atividades desempenhadas em uma experiência ou emprego passado.</li>
+	</ul>
+</div>
+
+
+<div class="row">
+	<div class="col-md-12">
+    	<h4>Empresa</h4>
+    	<input class="form-control input-lg"
+				   id="empresa" name="empresa"  ng-model="info_profissional.empresa" ng-required="true"/>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+    	<h4>Cargo</h4>
+    	<input class="form-control input-lg"
+				   id="cargo" name="cargo"  ng-model="info_profissional.cargo" ng-required="true"/>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+    	<h4>Início</h4>
+    	<input id="inicio" type="date" value="" name="inicio" class="form-control input-lg"
+			   ng-required="true" ng-model="info_profissional.inicio" ng-required="true"/>
+    </div>
+
+    <div class="col-md-6">
+    	<h4>Fim</h4>
+    	<input id="fim" type="date" value="" name="fim" class="form-control input-lg"
+			   ng-required="true" ng-model="info_profissional.fim" ng-required="true"/>
+    </div>
+</div>
+
+<div class="row" style="margin-top: 2em;">
+	<div class="col-md-12">
+		<div class="panel panel-primary">
+		  <div class="panel-heading">Atividades</div>
+			  <div class="panel-body">
+			    <div class="input-group">
+			    	<input type="text" class="form-control input-lg" ng-model="atividade.descricao">
+			    	<span class="input-group-btn">
+				        <button class="btn btn-primary btn-lg" ng-click="adicionar_atividade()" type="button">Adicionar <span class="glyphicon glyphicon-plus"/></button>
+				    </span>
+			    </div>
+			  </div>
+
+			  <ul class="list-group" ng-show="!!info_profissional.atividades.length">
+			    <li class="list-group-item" ng-repeat="atv in info_profissional.atividades">
+			    	<div class="form-inline">
+						<div class="form-group">
+							{{atv.descricao}}
+						</div>
+						<div class="form-group pull-right">
+							<button type="button" class="btn btn-xs btn-danger">Remover <span class="glyphicon glyphicon-trash"/> </button>
+						</div>
+					</div>
+			    </li>
+			  </ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row" style="margin-top: 2em;">
+	<div class="col-md-12">
+		<button class="btn btn-primary btn-lg" ng-click="adicionar()" type="button"	ng-disabled="!info_profissional_form.$valid">
+			Adicionar Informação Profissional <span class="glyphicon glyphicon-plus"/>
+		</button>	
+	</div>				  	
 </div>
