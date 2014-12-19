@@ -8,6 +8,21 @@
 	</ul>
 </div>
 
+<div class="alert alert-danger" ng-show="info_profissional.empresa.$error.required && !info_profissional.empresa.$pristine">
+	Informe o campo <b>Empresa</b>!
+</div>
+
+<div class="alert alert-danger" ng-show="info_profissional.cargo.$error.required && !info_profissional.cargo.$pristine">
+	Informe o campo <b>Cargo</b>!
+</div>
+
+<div class="alert alert-danger" ng-show="info_profissional.inicio.$error.required && !info_profissional.inicio.$pristine">
+	Informe o campo <b>Início</b>!
+</div>
+
+<div class="alert alert-danger" ng-show="info_profissional.fim.$error.required && !info_profissional.fim.$pristine">
+	Informe o campo <b>Fim</b>!
+</div>
 
 <div class="row">
 	<div class="col-md-12">
@@ -45,7 +60,8 @@
 		  <div class="panel-heading">Atividades</div>
 			  <div class="panel-body">
 			    <div class="input-group">
-			    	<input type="text" class="form-control input-lg" ng-model="atividade.descricao">
+			    	<input type="text" class="form-control input-lg" ng-model="atividade.descricao"
+			    		   ng-enter="adicionar_atividade();">
 			    	<span class="input-group-btn">
 				        <button class="btn btn-primary btn-lg" ng-click="adicionar_atividade()" type="button">Adicionar <span class="glyphicon glyphicon-plus"/></button>
 				    </span>
@@ -59,7 +75,7 @@
 							{{atv.descricao}}
 						</div>
 						<div class="form-group pull-right">
-							<button type="button" class="btn btn-xs btn-danger">Remover <span class="glyphicon glyphicon-trash"/> </button>
+							<button type="button" class="btn btn-xs btn-danger" ng-click="remover_atividade($index)">Remover <span class="glyphicon glyphicon-trash"/> </button>
 						</div>
 					</div>
 			    </li>
@@ -75,4 +91,46 @@
 			Adicionar Informação Profissional <span class="glyphicon glyphicon-plus"/>
 		</button>	
 	</div>				  	
+</div>
+
+<div class="panel panel-primary" style="margin-top: 2em;" ng-show="!!infos_profissional.lenght">
+	
+	<div class="panel-heading">
+		Informações Profissionais Adicionadas
+	</div>
+
+	<div class="panel panel-default" ng-repeat="info in infos_profissional">
+		
+		<div class="panel-body">
+			<fieldset>
+				<legend>{{info.cargo}}</legend>
+				
+				<div class="row">
+					<div class="col-md-12">
+	    				<b>Período</b>
+	    				<p>{{info.inicio}} até {{info.fim}}</p>
+	    			</div>
+	    		</div>
+
+				<div class="row">
+					<div class="col-md-12">
+	    				<b>Empresa</b>
+	    				<p>{{niveis[info.nivel]}}</p>
+	    			</div>
+	    		</div>
+
+	    		<div class="row">
+					<div class="col-md-12">
+	    				<b>Atividades</b>
+	    				<ul>
+	    					<li ng-repeat="ativ in info.atividades">
+	    						{{ativ.descricao}}
+	    					</li>
+	    				</ul>
+	    			</div>
+	    		</div>
+
+			</fieldset>
+		</div>
+	</div>
 </div>
