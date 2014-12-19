@@ -8,19 +8,19 @@
 	</ul>
 </div>
 
-<div class="alert alert-danger" ng-show="info_profissional.empresa.$error.required && !info_profissional.empresa.$pristine">
+<div class="alert alert-danger" ng-show="info_profissional_form.empresa.$error.required && !info_profissional_form.empresa.$pristine">
 	Informe o campo <b>Empresa</b>!
 </div>
 
-<div class="alert alert-danger" ng-show="info_profissional.cargo.$error.required && !info_profissional.cargo.$pristine">
+<div class="alert alert-danger" ng-show="info_profissional_form.cargo.$error.required && !info_profissional_form.cargo.$pristine">
 	Informe o campo <b>Cargo</b>!
 </div>
 
-<div class="alert alert-danger" ng-show="info_profissional.inicio.$error.required && !info_profissional.inicio.$pristine">
+<div class="alert alert-danger" ng-show="info_profissional_form.inicio.$error.required && !info_profissional_form.inicio.$pristine">
 	Informe o campo <b>Início</b>!
 </div>
 
-<div class="alert alert-danger" ng-show="info_profissional.fim.$error.required && !info_profissional.fim.$pristine">
+<div class="alert alert-danger" ng-show="info_profissional_form.fim.$error.required && !info_profissional_form.fim.$pristine">
 	Informe o campo <b>Fim</b>!
 </div>
 
@@ -43,8 +43,7 @@
 <div class="row">
     <div class="col-md-6">
     	<h4>Início</h4>
-    	<input id="inicio" type="date" value="" name="inicio" class="form-control input-lg"
-			   ng-required="true" ng-model="info_profissional.inicio" ng-required="true"/>
+    	<datepicker value="21/01/1990"></datepicker>
     </div>
 
     <div class="col-md-6">

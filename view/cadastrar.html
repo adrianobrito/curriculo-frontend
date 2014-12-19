@@ -5,7 +5,7 @@
 	<div ng-wizard title="Crie seu Cúrriculo Online!" current="{{$root.step}}" size="4">
 		
 		<form name="info_usuario_form" ng-controller="InfoUsuarioController as controller"
-			  novalidate ng-submit="controller.continuar()" ng-show="$root.step == 5"
+			  novalidate ng-submit="controller.continuar()" ng-show="$root.step == 1"
 			  ng-animate=" 'animate' ">
 			<div ng-include="'view/info_usuario.html'"></div>
 			<div class="row" style="padding-top: 2em;">

@@ -62,6 +62,24 @@ app.directive('ngEnter', function () {
     };
 });
 
+app.directive('datepicker', function() {
+    return {
+        restrict: 'E',
+        link: function(scope, element, attrs, ngModelCtrl) {
+          scope.value = attrs.value;
+          $(element).datepicker({
+              format: "dd/mm/yyyy",
+              language: "pt-BR",
+              autoclose: true
+          }).on('changeDate', function(e){
+            var date = e.format(null, "dd/mm/yyyy");
+            scope.value = date
+          });
+        },
+        templateUrl: 'js/components/datepicker/template.html'
+    };
+});
+
 /*** App Filters **/ 
 app.filter('range', function() {
   return function(input, total) {
