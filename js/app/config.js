@@ -66,15 +66,17 @@ app.directive('datepicker', function() {
     return {
         restrict: 'E',
         link: function(scope, element, attrs, ngModelCtrl) {
-          scope.value = attrs.value;
-          $(element).datepicker({
+          $(element).find('.input-group').datepicker({
               format: "dd/mm/yyyy",
               language: "pt-BR",
               autoclose: true
           }).on('changeDate', function(e){
             var date = e.format(null, "dd/mm/yyyy");
-            scope.value = date
+            $(element).find('.input-group').datepicker('update', date);
           });
+
+          scope.value = attrs.value;
+          $(element).find('.input-group').datepicker('setDate', attrs.value);          
         },
         templateUrl: 'js/components/datepicker/template.html'
     };
