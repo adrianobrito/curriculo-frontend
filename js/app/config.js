@@ -75,9 +75,12 @@ app.directive('datepicker', function() {
             $(element).find('.input-group').datepicker('update', date);
           });
 
-          scope.value = attrs.value;
-          $(element).find('.input-group').datepicker('setDate', attrs.value);          
+          scope.model = scope.$eval(attrs.model);
+          $(element).find('.input-group').datepicker('setDate', scope.$eval(attrs.ngModel));
+          $(element).find('input').attr("name", attrs.name); 
+
         },
+        transclude: false,
         templateUrl: 'js/components/datepicker/template.html'
     };
 });
