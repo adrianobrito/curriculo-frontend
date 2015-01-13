@@ -36,19 +36,19 @@
     <div class="col-md-12">
     	<h4>Cargo</h4>
     	<input class="form-control input-lg"
-				   id="cargo" name="cargo"  ng-model="info_profissional.cargo" ng-required="true"/>
+				  id="cargo" name="cargo"  ng-model="info_profissional.cargo" ng-required="true"/>
     </div>
 </div>
 
 <div class="row">
     <div class="col-md-6">
     	<h4>Início</h4>
-    	<datepicker model="info_profissional.inicio" id="inicio" name="inicio"></datepicker> {{info_profissional.inicio}}
+    	<input ng-datepicker type="text" class="form-control input-lg" ng-model="info_profissional.inicio" name="inicio" ng-required="true">    	
     </div>
 
     <div class="col-md-6">
     	<h4>Fim</h4>
-    	<datepicker></datepicker>
+    	<input ng-datepicker type="text" class="form-control input-lg" ng-model="info_profissional.fim" name="fim" ng-required="true">  
     </div>
 </div>
 
@@ -85,13 +85,13 @@
 
 <div class="row" style="margin-top: 2em;">
 	<div class="col-md-12">
-		<button class="btn btn-primary btn-lg" ng-click="adicionar()" type="button"	ng-disabled="!info_profissional_form.$valid">
+		<button class="btn btn-primary btn-lg" ng-click="adicionar()" type="button"	ng-disabled="(!info_profissional_form.$valid) || (info_profissional.atividades.length == 0)">
 			Adicionar Informação Profissional <span class="glyphicon glyphicon-plus"/>
 		</button>	
 	</div>				  	
 </div>
 
-<div class="panel panel-primary" style="margin-top: 2em;" ng-show="!!infos_profissional.lenght">
+<div class="panel panel-primary" style="margin-top: 2em;" ng-show="!!infos_profissional.length">
 	
 	<div class="panel-heading">
 		Informações Profissionais Adicionadas
@@ -113,7 +113,7 @@
 				<div class="row">
 					<div class="col-md-12">
 	    				<b>Empresa</b>
-	    				<p>{{niveis[info.nivel]}}</p>
+	    				<p>{{info.empresa}}</p>
 	    			</div>
 	    		</div>
 

@@ -62,26 +62,23 @@ app.directive('ngEnter', function () {
     };
 });
 
-app.directive('datepicker', function() {
+app.directive('ngDatepicker', function() {
     return {
-        restrict: 'E',
+        restrict: 'A',
         link: function(scope, element, attrs, ngModelCtrl) {
-          $(element).find('.input-group').datepicker({
+
+          $(element).wrap("<div class='input-group date'></div>");
+          $(element).parent().append('<span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>');
+
+          $(element).parent().datepicker({
               format: "dd/mm/yyyy",
               language: "pt-BR",
               autoclose: true
           }).on('changeDate', function(e){
-            var date = e.format(null, "dd/mm/yyyy");
-            $(element).find('.input-group').datepicker('update', date);
+            angular.element($(element)).triggerHandler('input');
           });
 
-          scope.model = scope.$eval(attrs.model);
-          $(element).find('.input-group').datepicker('setDate', scope.$eval(attrs.ngModel));
-          $(element).find('input').attr("name", attrs.name); 
-
-        },
-        transclude: false,
-        templateUrl: 'js/components/datepicker/template.html'
+        }
     };
 });
 
