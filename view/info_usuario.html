@@ -1,3 +1,6 @@
+<div class="alert alert-danger" ng-show="info_usuario_form.login.$error.required && !info_usuario_form.login.$pristine">
+	Informe o campo <b>Nome de Usuário</b>!
+</div>
 <div class="alert alert-danger" ng-show="info_usuario_form.email.$invalid && validate">
 	O <b>E-Mail</b> está em formato inválido
 </div>
@@ -12,6 +15,14 @@
 </div>
 <div class="alert alert-danger" ng-show="info_usuario_form.senhaConfirmacao.$error.sameAs && validateSenha">
 	As senhas não estão iguais!
+</div>
+
+<div class="row">
+	<div class="col-md-6">
+    	<h4>Nome de Usuário</h4>
+		<input id="login" type="text" name="login" class="form-control input-lg" ng-model="info_usuario.login" 
+			   ng-required="true"/>
+	</div>
 </div>
 	
 <div class="row">

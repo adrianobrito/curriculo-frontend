@@ -30,8 +30,8 @@ app.controller('InfoPessoalController', function($scope, $rootScope, $cv){
 	}
 
 	this.continuar = function(){
+		$scope.info_pessoal.nascimento = $scope.info_pessoal.nascimento.replace(/(\d{2})(\d{2})(\d{4})/, "$1/$2/$3");
 		$cv.put('info_pessoal', $scope.info_pessoal);
-		console.log($cv.get());
 		$rootScope.step = 2;
 	}
 
@@ -63,7 +63,6 @@ app.controller('InfoAcademicaController', function($scope, $rootScope, $cv){
 
 	this.continuar = function(){
 		$cv.put('info_academicas', $scope.info_academicas);
-		console.log($cv.get());
 		$rootScope.step = 3;
 	}
 
@@ -89,6 +88,11 @@ app.controller('InfoProfissionalController', function($scope){
 	}
 
 	$scope.adicionar = function(){
+		info_profissional = $scope.info_profissional;
+		info_profissional.inicio = info_profissional.inicio.replace(/(\d{2})(\d{2})(\d{4})/, "$1/$2/$3");
+		if(info_profissional.fim)
+			info_profissional.fim = info_profissional.fim.replace(/(\d{2})(\d{2})(\d{4})/, "$1/$2/$3");
+
 		$scope.infos_profissional.push($scope.info_profissional);
 		init();
 
@@ -98,5 +102,19 @@ app.controller('InfoProfissionalController', function($scope){
 	$scope.remover = function(index){
 		$scope.infos_profissional.splice(index, 1);
 	}
+
+	this.voltar = function(){
+		$rootScope.step = 2;
+	}
+
+	this.continuar = function(){
+		if($scope.infos_profissional.length != 0)
+			$cv.put('info_profissionals', $scope.infos_profissional);
+		$rootScope.step = 4;
+	}
+
+});
+
+app.controller('CursoController', function($scope){
 
 });
