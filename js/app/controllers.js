@@ -116,5 +116,21 @@ app.controller('InfoProfissionalController', function($scope){
 });
 
 app.controller('CursoController', function($scope){
+	$scope.cursos = []
+	var init = function(){
+		$scope.curso = {};
+	}
 
+	init();
+
+	$scope.adicionar_curso = function(){
+		curso = $scope.curso;
+		curso.inicio = curso.inicio.replace(/(\d{2})(\d{2})(\d{4})/, "$1/$2/$3");
+		if(curso.fim)
+			curso.fim = curso.fim.replace(/(\d{2})(\d{2})(\d{4})/, "$1/$2/$3");
+
+		$scope.cursos.push($scope.curso);
+		init();
+		$scope.curso_form.$setPristine(false);
+	}
 });

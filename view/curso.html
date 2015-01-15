@@ -6,10 +6,91 @@
 	<ul>
 		<li>Caso Você não possua nenhum curso para informar no cúrriculo, você pode pular esta etapa.
 	</ul>
+</div>
 
-	<div class="row">
-		<div class="col-md-12">
-		</div>
+<div class="alert alert-danger" ng-show="curso_form.descricao.$error.required && !curso_form.descricao.$pristine">
+	Informe o campo <b>Curso</b>!
+</div>
+
+<div class="alert alert-danger" ng-show="curso_form.instituicao.$error.required && !curso_form.instituicao.$pristine">
+	Informe o campo <b>Insituição</b>!
+</div>
+
+<div class="alert alert-danger" ng-show="curso_form.inicio.$error.required && !curso_form.inicio.$pristine">
+	Informe o campo <b>Início</b>!
+</div>
+
+<div class="alert alert-danger" ng-show="curso_form.fim.$error.required && !curso_form.fim.$pristine">
+	Informe o campo <b>Fim</b>!
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<h4>Curso</h4>
+		<input class="form-control input-lg"
+			   id="descricao" name="descricao"  ng-model="curso.descricao" ng-required="true"/>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<h4>Instituição</h4>
+		<input class="form-control input-lg"
+			   id="instituicao" name="instituicao" ng-model="curso.instituicao" ng-required="true"/>
+	</div>
+</div>
+
+<div class="row">
+	
+	<div class="col-md-6">
+		<h4>Início</h4>
+		<input ng-datepicker class="form-control input-lg"
+			   id="inicio" name="inicio" ng-model="curso.inicio" ng-required="true"/>
 	</div>
 
+	<div class="col-md-6">
+		<h4>Fim</h4>
+		<input ng-datepicker class="form-control input-lg"
+			   id="fim" name="fim" ng-model="curso.fim"/>
+	</div>
+
+</div>
+
+
+<div class="row" style="margin-top: 2em;">
+	<div class="col-md-12">
+		<button class="btn btn-primary btn-lg" ng-click="adicionar_curso()" type="button"	ng-disabled="!curso_form.$valid">
+			Adicionar Curso <span class="glyphicon glyphicon-plus"/>
+		</button>	
+	</div>				  	
+</div>
+
+
+<div class="panel panel-primary" style="margin-top: 2em;" ng-show="!!cursos.length">
+  <div class="panel-heading">
+  	Cursos Adicionados
+  </div>
+  <div class="panel-body">
+  	<div ng-repeat="curso in cursos" style="padding: 15px 15px 15px 15px;">
+  		<fieldset>
+			<legend>{{curso.descricao}}</legend>
+
+			<div class="row">
+				<div class="col-md-12">
+    				<b>Instituição</b>
+    				<p>{{curso.instituicao}}</p>
+    			</div>
+    		</div>
+
+			<div class="row">
+				<div class="col-md-12">
+    				<b>Período</b>
+    				<p ng-show="curso.fim">{{curso.inicio}} até {{curso.fim}}</p>
+    				<p ng-show="!curso.fim">{{curso.inicio}} até Atualmente</p>
+    			</div>
+    		</div>
+
+		</fieldset>
+  	</div>
+  </div>
 </div>
