@@ -1,3 +1,12 @@
+function next(step, label, value){
+	$cv.put(label, value);
+	go_to(step);
+}
+
+function go_to(step){
+	$rootScope.step = step;
+}
+
 app.controller('LoginController', function(){
 	this.salvar = function(){
 		alert("Salvou");
@@ -5,7 +14,7 @@ app.controller('LoginController', function(){
 });
 
 app.controller('CadastroController', function($scope, $rootScope, $cv){
-	$rootScope.step = 0;
+	go_to(0);
 	if($cv.get() == null || $cv.get() == undefined)
 		$cv.init();
 });
@@ -14,10 +23,7 @@ app.controller('InfoUsuarioController', function($scope, $rootScope, $cv){
 	$scope.info_usuario = {};
 	
 	this.continuar = function(){
-		var info_usuario = $scope.info_usuario;
-		$cv.put('info_usuario', info_usuario);
-		console.log($cv.get());
-		$rootScope.step = 1;
+		next(1,'info_usuario', $scope.info_usuario);
 	}
 
 });
@@ -26,13 +32,12 @@ app.controller('InfoPessoalController', function($scope, $rootScope, $cv){
 	$scope.info_pessoal = {};
 
 	this.voltar = function(){
-		$rootScope.step = 0;
+		go_to(0);
 	}
 
 	this.continuar = function(){
 		$scope.info_pessoal.nascimento = $scope.info_pessoal.nascimento.replace(/(\d{2})(\d{2})(\d{4})/, "$1/$2/$3");
-		$cv.put('info_pessoal', $scope.info_pessoal);
-		$rootScope.step = 2;
+		next(2,'info_pessoal', $scope.info_pessoal);
 	}
 
 });
@@ -58,12 +63,11 @@ app.controller('InfoAcademicaController', function($scope, $rootScope, $cv){
 	}
 
 	this.voltar = function(){
-		$rootScope.step = 1;
+		go_to(1);
 	}
 
 	this.continuar = function(){
-		$cv.put('info_academicas', $scope.info_academicas);
-		$rootScope.step = 3;
+		next(3,'info_academicas', $scope.info_academicas);
 	}
 
 });
@@ -104,13 +108,13 @@ app.controller('InfoProfissionalController', function($scope){
 	}
 
 	this.voltar = function(){
-		$rootScope.step = 2;
+		go_to(2);
 	}
 
 	this.continuar = function(){
 		if($scope.infos_profissional.length != 0)
 			$cv.put('info_profissionals', $scope.infos_profissional);
-		$rootScope.step = 4;
+		go_to(4);
 	}
 
 });
@@ -133,4 +137,15 @@ app.controller('CursoController', function($scope){
 		init();
 		$scope.curso_form.$setPristine(false);
 	}
+
+	$scope.adicionar = function(){
+		if($scope.cursos.length != 0)
+			$cv.put('cursos', $scope.cursos);
+		go_to(4);
+	}
+
+	$scope.voltar = function(){
+
+	}
+
 });
