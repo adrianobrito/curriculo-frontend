@@ -1,0 +1,29 @@
+<div class="well">
+	<p>Essa é a seção onde você vai informar suas algumas qualificações individuais que podem ser um diferencial para a conquista da sua vaga no mercado de trabalho. </p>
+</div>
+
+<div class="row" style="margin-top: 2em;">
+	<div class="col-md-12">
+	    <div class="input-group">
+	    	<input type="text" class="form-control input-lg" ng-model="qualificacao.descricao"
+	    		   ng-enter="adicionar_qualificacao();" placeholder="Informe aqui as suas qualificações">
+	    	<span class="input-group-btn">
+		        <button class="btn btn-primary btn-lg" ng-click="adicionar_qualificacao()" type="button">Adicionar <span class="glyphicon glyphicon-plus"/></button>
+		    </span>
+	    </div>
+	  
+	  <ul class="list-group" ng-show="!!qualificacoes.length">
+	    <li class="list-group-item" ng-repeat="qual in qualificacoes">
+	    	<div class="form-inline">
+				<div class="form-group">
+					{{qual.descricao}}
+				</div>
+				<div class="form-group pull-right">
+					<button type="button" class="btn btn-xs btn-danger" ng-click="remover_qualificacao($index)">Remover <span class="glyphicon glyphicon-trash"/> </button>
+				</div>
+			</div>
+	    </li>
+	  </ul>
+			
+	</div>
+</div>

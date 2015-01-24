@@ -84,7 +84,7 @@
 		</form>
 
 		<form name="curso_form" ng-controller="CursoController as controller"
-			  novalidate ng-submit="controller.continuar()" ng-show="$root.step == 0"
+			  novalidate ng-submit="controller.continuar()" ng-show="$root.step == 4"
 			  ng-animate=" 'animate' ">
 			  <div class="panel panel-primary">
 				  <div class="panel-heading">
@@ -106,6 +106,32 @@
 				</div>
 			  </div>
 			  
+		</form>
+
+		<form name="qualificacao_form" ng-controller="QualificacaoController as controller"
+			  novalidate ng-submit="controller.continuar()" ng-show="$root.step == 0"
+			  ng-animate=" 'animate' ">
+
+			  <div class="panel panel-primary">
+				  <div class="panel-heading">
+				  	Qualificações
+				  </div>
+				  <div class="panel-body">
+				    <div ng-include="'view/qualificacao.html'"></div>
+				  </div>
+			  </div>
+
+			  <div class="row" style="padding-top: 1em;">
+				<div class="col-md-12">
+					<button class="btn btn-default btn-lg" ng-click="controller.voltar()" type="button">
+						Voltar <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> 
+					</button>
+					<button class="btn btn-primary btn-lg" type="submit">
+						Finalizar Cúrriculo <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span> 
+					</button>
+				</div>
+			  </div>
+
 		</form>
 
 	</div>

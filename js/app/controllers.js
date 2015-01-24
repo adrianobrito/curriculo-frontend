@@ -1,10 +1,10 @@
-function next(step, label, value){
+function next(rootScope, step, label, value){
 	$cv.put(label, value);
-	go_to(step);
+	go_to(rootScope, step);
 }
 
-function go_to(step){
-	$rootScope.step = step;
+function go_to(rootScope, step){
+	rootScope.step = step;
 }
 
 app.controller('LoginController', function(){
@@ -14,7 +14,7 @@ app.controller('LoginController', function(){
 });
 
 app.controller('CadastroController', function($scope, $rootScope, $cv){
-	go_to(0);
+	go_to($rootScope, 0);
 	if($cv.get() == null || $cv.get() == undefined)
 		$cv.init();
 });
@@ -23,7 +23,7 @@ app.controller('InfoUsuarioController', function($scope, $rootScope, $cv){
 	$scope.info_usuario = {};
 	
 	this.continuar = function(){
-		next(1,'info_usuario', $scope.info_usuario);
+		next($rootScope, 1,'info_usuario', $scope.info_usuario);
 	}
 
 });
@@ -32,12 +32,12 @@ app.controller('InfoPessoalController', function($scope, $rootScope, $cv){
 	$scope.info_pessoal = {};
 
 	this.voltar = function(){
-		go_to(0);
+		go_to($rootScope, 0);
 	}
 
 	this.continuar = function(){
 		$scope.info_pessoal.nascimento = $scope.info_pessoal.nascimento.replace(/(\d{2})(\d{2})(\d{4})/, "$1/$2/$3");
-		next(2,'info_pessoal', $scope.info_pessoal);
+		next($rootScope, 2,'info_pessoal', $scope.info_pessoal);
 	}
 
 });
@@ -63,11 +63,11 @@ app.controller('InfoAcademicaController', function($scope, $rootScope, $cv){
 	}
 
 	this.voltar = function(){
-		go_to(1);
+		go_to($rootScope, 1);
 	}
 
 	this.continuar = function(){
-		next(3,'info_academicas', $scope.info_academicas);
+		next($rootScope, 3,'info_academicas', $scope.info_academicas);
 	}
 
 });
@@ -108,13 +108,13 @@ app.controller('InfoProfissionalController', function($scope){
 	}
 
 	this.voltar = function(){
-		go_to(2);
+		go_to($rootScope, 2);
 	}
 
 	this.continuar = function(){
 		if($scope.infos_profissional.length != 0)
 			$cv.put('info_profissionals', $scope.infos_profissional);
-		go_to(4);
+		go_to($rootScope, 4);
 	}
 
 });
@@ -141,11 +141,36 @@ app.controller('CursoController', function($scope){
 	$scope.adicionar = function(){
 		if($scope.cursos.length != 0)
 			$cv.put('cursos', $scope.cursos);
-		go_to(4);
+		go_to($rootScope, 5);
 	}
 
 	$scope.voltar = function(){
-
+		go_to($rootScope, 3);
 	}
 
+});
+
+app.controller('QualificacaoController', function($scope){
+	$scope.qualificacoes = []
+	$scope.qualificacao = {}
+
+	$scope.remover_qualificacao = function(index){
+		$scope.qualificacoes.splice(index, 1);
+	}
+
+	$scope.adicionar_qualificacao = function(){
+		console.log($scope.qualificacao);
+		$scope.qualificacoes.push($scope.qualificacao);
+		$scope.qualificacao =  {}
+	}
+
+	$scope.continuar = function(){
+		if($scope.qualifcacoes.length != 0)
+			$cv.put('qualifcacoes', $scope.qualifcacoes);
+	}
+
+	$scope.voltar = function(){
+		go_to($rootScope, 4);
+	}
+	
 });
