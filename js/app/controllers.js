@@ -166,7 +166,8 @@ app.controller('QualificacaoController', function($scope){
 
 	$scope.continuar = function(){
 		if($scope.qualifcacoes.length != 0)
-			$cv.put('qualifcacoes', $scope.qualifcacoes);
+			$cv.put('qualifcacoes', $scope.qualificacoes);
+		go_to($rootScope, 6);
 	}
 
 	$scope.voltar = function(){

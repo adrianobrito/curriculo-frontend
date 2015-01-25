@@ -12,9 +12,6 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 		templateUrl: 'view/cadastrar.html'
 	}).
 
-	when('/cadastrar_academica', {
-		templateUrl: 'view/info_academica.html'
-	})
 
 }]);
 
