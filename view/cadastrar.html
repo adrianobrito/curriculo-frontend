@@ -133,6 +133,21 @@
 			  </div>
 
 		</form>
+		
+		<form name="success_form" ng-controller="SuccessController as controller"
+			  novalidate ng-show="$root.step == 6"
+			  ng-animate=" 'animate' ">
+			
+			<div class="panel panel-primary">
+				  <div class="panel-heading">
+				  	Sucesso!
+				  </div>
+				  <div class="panel-body">
+				    <div ng-include="'view/success.html'"></div>
+				  </div>
+			  </div>
+
+		</form>
 
 	</div>
 </div>

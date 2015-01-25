@@ -3,6 +3,7 @@ Cúrriculo Front-End
 
 Tarefas pendentes
 
++ Adicionar um componente well introdutório na primeira etapa do wizard
 + Atualização dos registros adicionados na informação profissional
 + Atualização dos registros adicionados na informação acadêmica
 + Atualização dos cursos adicionados
