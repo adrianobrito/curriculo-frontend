@@ -72,7 +72,7 @@ app.controller('InfoAcademicaController', function($scope, $rootScope, $cv){
 
 });
 
-app.controller('InfoProfissionalController', function($scope){
+app.controller('InfoProfissionalController', function($scope, $rootScope, $cv){
 	$scope.infos_profissional = []
 	var init = function(){
 		$scope.info_profissional = {}
@@ -119,7 +119,7 @@ app.controller('InfoProfissionalController', function($scope){
 
 });
 
-app.controller('CursoController', function($scope){
+app.controller('CursoController', function($scope, $rootScope, $cv){
 	$scope.cursos = []
 	var init = function(){
 		$scope.curso = {};
@@ -150,7 +150,7 @@ app.controller('CursoController', function($scope){
 
 });
 
-app.controller('QualificacaoController', function($scope){
+app.controller('QualificacaoController', function($scope, $rootScope, $cv){
 	$scope.qualificacoes = []
 	$scope.qualificacao = {}
 
@@ -174,4 +174,10 @@ app.controller('QualificacaoController', function($scope){
 		go_to($rootScope, 4);
 	}
 	
+});
+
+app.controller('SuccessController', function($scope, $rootScope, $cv){
+	//$scope.info_usuario = $cv.get().info_usuario;
+	$scope.info_usuario = {}
+	$scope.info_usuario.login = "adrianobrito"
 });

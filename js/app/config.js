@@ -10,9 +10,8 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 
 	when('/cadastrar',{
 		templateUrl: 'view/cadastrar.html'
-	}).
-
-
+	})
+		
 }]);
 
 /*** App Directives **/ 
