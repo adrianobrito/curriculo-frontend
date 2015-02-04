@@ -1,3 +1,12 @@
+function next(rootScope, step, label, value, $cv){
+	$cv.put(label, value);
+	go_to(rootScope, step);
+}
+
+function go_to(rootScope, step){
+	rootScope.step = step;
+}
+
 app.controller('LoginController', function(){
 	this.salvar = function(){
 		alert("Salvou");
@@ -5,7 +14,7 @@ app.controller('LoginController', function(){
 });
 
 app.controller('CadastroController', function($scope, $rootScope, $cv){
-	$rootScope.step = 0;
+	go_to($rootScope, 0);
 	if($cv.get() == null || $cv.get() == undefined)
 		$cv.init();
 });
@@ -14,10 +23,7 @@ app.controller('InfoUsuarioController', function($scope, $rootScope, $cv){
 	$scope.info_usuario = {};
 	
 	this.continuar = function(){
-		var info_usuario = $scope.info_usuario;
-		$cv.put('info_usuario', info_usuario);
-		console.log($cv.get());
-		$rootScope.step = 1;
+		next($rootScope, 1,'info_usuario', $scope.info_usuario, $cv);
 	}
 
 });
@@ -26,13 +32,12 @@ app.controller('InfoPessoalController', function($scope, $rootScope, $cv){
 	$scope.info_pessoal = {};
 
 	this.voltar = function(){
-		$rootScope.step = 0;
+		go_to($rootScope, 0);
 	}
 
 	this.continuar = function(){
 		$scope.info_pessoal.nascimento = $scope.info_pessoal.nascimento.replace(/(\d{2})(\d{2})(\d{4})/, "$1/$2/$3");
-		$cv.put('info_pessoal', $scope.info_pessoal);
-		$rootScope.step = 2;
+		next($rootScope, 2,'info_pessoal', $scope.info_pessoal , $cv);
 	}
 
 });
@@ -58,17 +63,16 @@ app.controller('InfoAcademicaController', function($scope, $rootScope, $cv){
 	}
 
 	this.voltar = function(){
-		$rootScope.step = 1;
+		go_to($rootScope, 1);
 	}
 
 	this.continuar = function(){
-		$cv.put('info_academicas', $scope.info_academicas);
-		$rootScope.step = 3;
+		next($rootScope, 3,'info_academicas', $scope.info_academicas, $cv);
 	}
 
 });
 
-app.controller('InfoProfissionalController', function($scope){
+app.controller('InfoProfissionalController', function($scope, $rootScope, $cv){
 	$scope.infos_profissional = []
 	var init = function(){
 		$scope.info_profissional = {}
@@ -104,18 +108,18 @@ app.controller('InfoProfissionalController', function($scope){
 	}
 
 	this.voltar = function(){
-		$rootScope.step = 2;
+		go_to($rootScope, 2);
 	}
 
 	this.continuar = function(){
 		if($scope.infos_profissional.length != 0)
 			$cv.put('info_profissionals', $scope.infos_profissional);
-		$rootScope.step = 4;
+		go_to($rootScope, 4);
 	}
 
 });
 
-app.controller('CursoController', function($scope){
+app.controller('CursoController', function($scope, $rootScope, $cv){
 	$scope.cursos = []
 	var init = function(){
 		$scope.curso = {};
@@ -133,4 +137,47 @@ app.controller('CursoController', function($scope){
 		init();
 		$scope.curso_form.$setPristine(false);
 	}
+
+	this.continuar = function(){
+		if($scope.cursos.length != 0)
+			$cv.put('cursos', $scope.cursos);
+		go_to($rootScope, 5);
+	}
+
+	this.voltar = function(){
+		go_to($rootScope, 3);
+	}
+
+});
+
+app.controller('QualificacaoController', function($scope, $rootScope, $cv){
+	$scope.qualificacoes = []
+	$scope.qualificacao = {}
+
+	$scope.remover_qualificacao = function(index){
+		$scope.qualificacoes.splice(index, 1);
+	}
+
+	$scope.adicionar_qualificacao = function(){
+		$scope.qualificacoes.push($scope.qualificacao);
+		$scope.qualificacao =  {}
+		console.log($scope.qualificacoes);
+	}
+
+	this.continuar = function(){
+		if($scope.qualificacoes.length != 0)
+			$cv.put('qualifcacoes', $scope.qualificacoes);
+		go_to($rootScope, 6);
+	}
+
+	this.voltar = function(){
+		go_to($rootScope, 4);
+	}
+	
+});
+
+app.controller('SuccessController', function($scope, $rootScope, $cv){
+	//$scope.info_usuario = $cv.get().info_usuario;
+	$scope.info_usuario = {}
+	$scope.info_usuario.login = "adrianobrito"
 });
