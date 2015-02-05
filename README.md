@@ -8,6 +8,7 @@ Tarefas pendentes
 + ~~Atualização dos registros adicionados na informação acadêmica~~
 + Atualização dos cursos adicionados
 + Exibição do cúrriculo
++ ~~Adicionar Icone~~
 + ~~Alteração de todos os componentes de data, adicionando mascara~~
 + ~~Página de Sucesso na criação do cúrriculo~~
 + Atualização na página de exibição do cúrriculo
