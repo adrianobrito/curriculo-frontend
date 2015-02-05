@@ -70,7 +70,9 @@
 <div class="row" style="margin-top: 2em;">
 	<div class="col-md-12">
 		<button class="btn btn-primary btn-lg" ng-click="adicionar()" type="button"	ng-disabled="!info_academica_form.$valid">
-			Adicionar Informação Acadêmica <span class="glyphicon glyphicon-plus"/>
+			<span ng-show="!editing">Adicionar Informação Acadêmica</span> 
+			<span ng-show="editing">Salvar Informação Acadêmica</span>
+			<span class="glyphicon glyphicon-plus"/>
 		</button>	
 	</div>				  	
 </div>
@@ -80,41 +82,55 @@
   	Informações Acadêmicas Adicionadas
   </div>
   <div class="panel-body">
-  	<div ng-repeat="info in infos_academica">
-  		<div class="panel panel-default" style="margin-top: 2em;">
+  	<div ng-repeat="info in infos_academica" style="padding: 15px 15px 15px 15px;">
+  		
+  		<fieldset class="fieldset">
+  			<legend>
+	  			<div class="row">
+	  				<div class="col-xs-9">
+	  					{{niveis[info.nivel]}}
+	  				</div>
+	  				
+	  				<div class="col-xs-3">
+	  					<span style="float: right; margin-bottom: 5px;">
+	  						<button class="btn btn-danger" href="" ng-click="prepareRemove($index); openModal('confirmRemocao');" type="button"> 
+		  						<i class="glyphicon glyphicon-trash"></i> Remover
+		  					</button>
 
-  			<div class="panel-body">
-  				<div class="row">
-					<div class="col-md-12">
-	    				<b>Nível</b>
-	    				<p>{{niveis[info.nivel]}}</p>
-	    			</div>
-	    		</div>
+		  					<button class="btn btn-default" href="" ng-click="editar(info)" type="button"> 
+		  						<i class="glyphicon glyphicon-edit"></i> Editar
+		  					</button>	
+	  					</span>
+	  				</div>
+	  				
+	  			</div>
+	  		</legend>
 
-	    		<div class="row" ng-show="info.curso != undefined">
-	    			<div class="col-md-12">
-	    				<b>Curso</b>
-	    				<p>{{info.curso}}</p>
-	    			</div>
-	    		</div>
+  		</fieldset>
 
-	    		<div class="row">
-	    			<div class="col-md-12">
-	    				<b>Instituição</b>
-	    				<p>{{info.instituicao}}</p>
-	    			</div>
-	    		</div>
+		<div class="row" ng-show="info.curso != undefined">
+			<div class="col-md-12">
+				<b>Curso</b>
+				<p>{{info.curso}}</p>
+			</div>
+		</div>
 
-	    		<div class="row">
-	    			<div class="col-md-12">
-	    				<b>Incompleto? </b>
-	    				<p>{{info.incompleto ? 'Sim' : 'Não'}}</p>
-	    			</div>
-	    		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<b>Instituição</b>
+				<p>{{info.instituicao}}</p>
+			</div>
+		</div>
 
-  			</div>
-  			
-  		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<b>Incompleto? </b>
+				<p>{{info.incompleto ? 'Sim' : 'Não'}}</p>
+			</div>
+		</div>
+
   	</div>
   </div>
 </div>
+
+<modal confirm="true" id="confirmRemocao" title="Atenção" ng-confirm="remover()">Você deseja remover esta Informação Acadêmica?</modal>

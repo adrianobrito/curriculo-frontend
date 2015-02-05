@@ -45,6 +45,8 @@ app.controller('InfoPessoalController', function($scope, $rootScope, $cv){
 app.controller('InfoAcademicaController', function($scope, $rootScope, $cv){
 	$scope.info_academica = {};
 	$scope.infos_academica = [];
+	$scope.editing = false;
+
 	$scope.niveis = {
 		'ensino_fundamental' : "Ensino Fundamental",
 		'ensino_medio' : "Ensino Médio",
@@ -52,14 +54,29 @@ app.controller('InfoAcademicaController', function($scope, $rootScope, $cv){
 		'ensino_superior_pos_graduacao' : "Pós-Graduação"
 	}
 
+	$scope.editar = function(info_academica){
+		$scope.editing = true;
+		$scope.info_academica = info_academica;
+	}
+
 	$scope.adicionar = function(){
-		$scope.infos_academica.push($scope.info_academica);
+		if($scope.editing){
+			$scope.editing = false;
+		} else{
+			$scope.infos_academica.push($scope.info_academica);	
+		}
+		
 		$scope.info_academica_form.$setPristine(false);
 		$scope.info_academica = {}
 	}
 
-	this.remover = function(index){
-		$scope.infos_academica.splice(index, 1);
+	$scope.prepareRemove = function(index){
+		$scope.removeIndex = index;
+	}
+
+	$scope.remover = function(){
+		$scope.infos_academica.splice($scope.removeIndex, 1);
+		$scope.$apply();
 	}
 
 	this.voltar = function(){
