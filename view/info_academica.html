@@ -70,9 +70,8 @@
 <div class="row" style="margin-top: 2em;">
 	<div class="col-md-12">
 		<button class="btn btn-primary btn-lg" ng-click="adicionar()" type="button"	ng-disabled="!info_academica_form.$valid">
-			<span ng-show="!editing">Adicionar Informação Acadêmica</span> 
-			<span ng-show="editing">Salvar Informação Acadêmica</span>
-			<span class="glyphicon glyphicon-plus"/>
+			<span ng-show="!editing">Adicionar Informação Acadêmica <span class="glyphicon glyphicon-plus"/></span> 
+			<span ng-show="editing">Salvar Informação Acadêmica <span class="glyphicon glyphicon-floppy"/></span>			
 		</button>	
 	</div>				  	
 </div>
@@ -93,7 +92,7 @@
 	  				
 	  				<div class="col-xs-3">
 	  					<span style="float: right; margin-bottom: 5px;">
-	  						<button class="btn btn-danger" href="" ng-click="prepareRemove($index); openModal('confirmRemocao');" type="button"> 
+	  						<button class="btn btn-danger" href="" ng-click="prepareRemove($index); openModal('confirmRemocaoAcademica');" type="button"> 
 		  						<i class="glyphicon glyphicon-trash"></i> Remover
 		  					</button>
 
@@ -106,31 +105,31 @@
 	  			</div>
 	  		</legend>
 
+	  		<div class="row" ng-show="info.curso != undefined">
+				<div class="col-md-12">
+					<b>Curso</b>
+					<p>{{info.curso}}</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<b>Instituição</b>
+					<p>{{info.instituicao}}</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<b>Incompleto? </b>
+					<p>{{info.incompleto ? 'Sim' : 'Não'}}</p>
+				</div>
+			</div>
+
   		</fieldset>
-
-		<div class="row" ng-show="info.curso != undefined">
-			<div class="col-md-12">
-				<b>Curso</b>
-				<p>{{info.curso}}</p>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-md-12">
-				<b>Instituição</b>
-				<p>{{info.instituicao}}</p>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-md-12">
-				<b>Incompleto? </b>
-				<p>{{info.incompleto ? 'Sim' : 'Não'}}</p>
-			</div>
-		</div>
 
   	</div>
   </div>
 </div>
 
-<modal confirm="true" id="confirmRemocao" title="Atenção" ng-confirm="remover()">Você deseja remover esta Informação Acadêmica?</modal>
+<modal confirm="true" id="confirmRemocaoAcademica" title="Atenção" ng-confirm="remover()">Você deseja remover esta Informação Acadêmica?</modal>

@@ -4,8 +4,9 @@ Cúrriculo Front-End
 Tarefas pendentes
 
 + ~~Adicionar um componente well introdutório na primeira etapa do wizard~~
-+ Atualização dos registros adicionados na informação profissional
++ ~~Atualização dos registros adicionados na informação profissional~~
 + ~~Atualização dos registros adicionados na informação acadêmica~~
++ ~~Mover a tela para a area de edição, ao receber o evento do botão~~
 + Atualização dos cursos adicionados
 + Exibição do cúrriculo
 + ~~Adicionar Icone~~

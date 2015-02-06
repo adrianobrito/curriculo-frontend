@@ -88,7 +88,8 @@
 <div class="row" style="margin-top: 2em;">
 	<div class="col-md-12">
 		<button class="btn btn-primary btn-lg" ng-click="adicionar()" type="button"	ng-disabled="(!info_profissional_form.$valid) || (info_profissional.atividades.length == 0)">
-			Adicionar Informação Profissional <span class="glyphicon glyphicon-plus"/>
+			<span ng-show="!editing">Adicionar Informação Profissional <i class="glyphicon glyphicon-plus"></i></span> 
+			<span ng-show="editing">Salvar Informação Profissional <i class="glyphicon glyphicon-floppy-disk"></i></span>
 		</button>	
 	</div>				  	
 </div>
@@ -101,7 +102,26 @@
 
 	<div ng-repeat="info in infos_profissional" style="padding: 15px 15px 15px 15px;">
 		<fieldset>
-			<legend>{{info.cargo}}</legend>
+			<legend>
+	  			<div class="row">
+	  				<div class="col-xs-9">
+	  					{{info.cargo}}
+	  				</div>
+	  				
+	  				<div class="col-xs-3">
+	  					<span style="float: right; margin-bottom: 5px;">
+	  						<button class="btn btn-danger" href="" ng-click="prepareRemove($index); openModal('confirmRemocaoProfissional');" type="button"> 
+		  						<i class="glyphicon glyphicon-trash"></i> Remover
+		  					</button>
+
+		  					<button class="btn btn-default" href="" ng-click="editar(info)" type="button"> 
+		  						<i class="glyphicon glyphicon-edit"></i> Editar
+		  					</button>	
+	  					</span>
+	  				</div>
+	  				
+	  			</div>
+	  		</legend>
 			
 			<div class="row">
 				<div class="col-md-12">
@@ -132,3 +152,6 @@
 		</fieldset>
 	</div>
 </div>
+
+
+<modal confirm="true" id="confirmRemocaoProfissional" title="Atenção" ng-confirm="remover()">Você deseja remover esta Informação Profissional?</modal>

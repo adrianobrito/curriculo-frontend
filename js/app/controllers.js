@@ -95,9 +95,24 @@ app.controller('InfoProfissionalController', function($scope, $rootScope, $cv){
 		$scope.info_profissional = {}
 		$scope.info_profissional.atividades = []
 		$scope.atividade = { }
+		$scope.editing = false;
 	};
 
 	init();
+
+	$scope.remover = function(){
+		$scope.infos_profissional.splice($scope.removeIndex, 1);
+		$scope.$apply();
+	}
+
+	$scope.prepareRemove = function(index){
+		$scope.removeIndex = index;
+	}
+
+	$scope.editar = function(info_profissional){
+		$scope.editing = true;
+		$scope.info_profissional = info_profissional;	
+	}
 
 	$scope.adicionar_atividade = function(){
 		$scope.info_profissional.atividades.push($scope.atividade);
@@ -114,14 +129,14 @@ app.controller('InfoProfissionalController', function($scope, $rootScope, $cv){
 		if(info_profissional.fim)
 			info_profissional.fim = info_profissional.fim.replace(/(\d{2})(\d{2})(\d{4})/, "$1/$2/$3");
 
-		$scope.infos_profissional.push($scope.info_profissional);
+		if($scope.editing){
+			$scope.editing = false;
+		} else{
+			$scope.infos_profissional.push($scope.info_profissional);	
+		}
+
 		init();
-
 		$scope.info_profissional_form.$setPristine(false);
-	}
-
-	$scope.remover = function(index){
-		$scope.infos_profissional.splice(index, 1);
 	}
 
 	this.voltar = function(){
