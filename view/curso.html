@@ -60,7 +60,8 @@
 <div class="row" style="margin-top: 2em;">
 	<div class="col-md-12">
 		<button class="btn btn-primary btn-lg" ng-click="adicionar_curso()" type="button"	ng-disabled="!curso_form.$valid">
-			Adicionar Curso <span class="glyphicon glyphicon-plus"/>
+			<span ng-show="!editing">Adicionar Curso <i class="glyphicon glyphicon-plus"></i></span> 
+			<span ng-show="editing">Salvar Curso <i class="glyphicon glyphicon-floppy-disk"></i></span>
 		</button>	
 	</div>				  	
 </div>
@@ -73,7 +74,25 @@
   <div class="panel-body">
   	<div ng-repeat="curso in cursos" style="padding: 15px 15px 15px 15px;">
   		<fieldset>
-			<legend>{{curso.descricao}}</legend>
+			<legend>
+				<div class="row">
+	  				<div class="col-xs-9">
+	  					{{curso.descricao}}
+	  				</div>
+	  				
+	  				<div class="col-xs-3">
+	  					<span style="float: right; margin-bottom: 5px;">
+	  						<button class="btn btn-danger" href="" ng-click="prepareRemove($index); openModal('confirmRemocaoCurso');" type="button"> 
+		  						<i class="glyphicon glyphicon-trash"></i> Remover
+		  					</button>
+
+		  					<button class="btn btn-default" href="" ng-click="editar(curso)" type="button"> 
+		  						<i class="glyphicon glyphicon-edit"></i> Editar
+		  					</button>	
+	  					</span>
+	  				</div>	  				
+	  			</div>
+			</legend>
 
 			<div class="row">
 				<div class="col-md-12">
@@ -94,3 +113,5 @@
   	</div>
   </div>
 </div>
+
+<modal confirm="true" id="confirmRemocaoCurso" title="Atenção" ng-confirm="remover()">Você deseja remover esta Curso do seu cúrriculo?</modal>

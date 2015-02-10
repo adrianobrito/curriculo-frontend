@@ -155,6 +155,7 @@ app.controller('CursoController', function($scope, $rootScope, $cv){
 	$scope.cursos = []
 	var init = function(){
 		$scope.curso = {};
+		$scope.editing = false;
 	}
 
 	init();
@@ -165,9 +166,28 @@ app.controller('CursoController', function($scope, $rootScope, $cv){
 		if(curso.fim)
 			curso.fim = curso.fim.replace(/(\d{2})(\d{2})(\d{4})/, "$1/$2/$3");
 
-		$scope.cursos.push($scope.curso);
+		if($scope.editing){
+			$scope.editing = false;
+		} else{
+			$scope.cursos.push($scope.curso);	
+		}
+
 		init();
 		$scope.curso_form.$setPristine(false);
+	}
+	
+	$scope.remover = function(){
+		$scope.cursos.splice($scope.removeIndex, 1);
+		$scope.$apply();
+	}
+
+	$scope.prepareRemove = function(index){
+		$scope.removeIndex = index;
+	}
+
+	$scope.editar = function(curso){
+		$scope.editing = true;
+		$scope.curso = curso;	
 	}
 
 	this.continuar = function(){

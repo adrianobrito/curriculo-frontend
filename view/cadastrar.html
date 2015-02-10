@@ -5,7 +5,7 @@
 	<div ng-wizard title="Crie seu Cúrriculo Online!" current="{{$root.step}}" size="7">
 		
 		<form name="info_usuario_form" ng-controller="InfoUsuarioController as controller"
-			  novalidate ng-submit="controller.continuar()" ng-show="$root.step == 1"
+			  novalidate ng-submit="controller.continuar()" ng-show="$root.step == 0"
 			  ng-animate=" 'animate' ">
 
 			<div class="well">
@@ -63,7 +63,7 @@
 		</form>
 
 		<form name="info_profissional_form" ng-controller="InfoProfissionalController as controller"
-			  novalidate ng-submit="controller.continuar()" ng-show="$root.step == 0"
+			  novalidate ng-submit="controller.continuar()" ng-show="$root.step == 3"
 			  ng-animate=" 'animate' ">
 			  <div class="panel panel-primary">
 				  <div class="panel-heading">
