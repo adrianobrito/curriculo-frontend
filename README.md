@@ -3,6 +3,7 @@ Cúrriculo Front-End
 
 Tarefas pendentes
 
++ Envio do JSON do cúrriculo para o banco
 + ~~Adicionar um componente well introdutório na primeira etapa do wizard~~
 + ~~Atualização dos registros adicionados na informação profissional~~
 + ~~Atualização dos registros adicionados na informação acadêmica~~
