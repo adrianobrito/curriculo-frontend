@@ -18,3 +18,4 @@ Tarefas pendentes
 + Login
 + Esqueci minha senha
 + Pesquisar disponibilidade de Username
++ Verificar método OPTIONS

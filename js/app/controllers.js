@@ -219,6 +219,8 @@ app.controller('QualificacaoController', function($scope, $rootScope, $cv){
 	this.continuar = function(){
 		if($scope.qualificacoes.length != 0)
 			$cv.put('qualifcacoes', $scope.qualificacoes);
+
+		$cv.send();
 		go_to($rootScope, 6);
 	}
 
